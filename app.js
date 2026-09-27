@@ -100,6 +100,12 @@ function savePad(p){
     localStorage.setItem('np_pad', String(p.number));
   }catch(e){}
 }
+function clearPad(){
+  try{
+    localStorage.removeItem('np_station');
+    localStorage.removeItem('np_pad');
+  }catch(e){}
+}
 
 let pad = loadPad();
 let rt = {
@@ -215,6 +221,7 @@ function settingsModal(){
         <button class="btn btn-outline" data-action="close-settings">닫기</button>
         <button class="btn btn-primary" data-action="reassign">다시 지정하기</button>
       </div>
+      <button class="reset-link" data-action="reset-intro">처음 화면(인트로)부터 다시 보기</button>
     </div>
   </div>`;
 }
@@ -310,6 +317,7 @@ function renderStationHome(){
   return `<div class="screen">
     ${headerHTML(s, { big: true })}
     <div class="home-steps"><div class="home-steps-inner">
+      <div class="home-steps-title jua">이렇게 해요</div>
       ${s.steps.map((t, i) => `<div class="step-row"><div class="step-num jua" style="background:${s.color}">${i + 1}</div><div class="step-text">${t}</div></div>`).join('')}
     </div></div>
     <div class="home-footer"><button class="btn btn-primary" data-action="begin-mission">시작!</button></div>
@@ -577,6 +585,16 @@ function handleAction(action, el){
       rt.pendingPad = pad.number;
       rt.settingsOpen = false;
       rt.screen = 'setup';
+      render();
+      break;
+    case 'reset-intro':
+      clearPad();
+      pad = null;
+      resetMissionState();
+      rt.settingsOpen = false;
+      rt.pendingStation = null;
+      rt.pendingPad = null;
+      rt.screen = 'intro';
       render();
       break;
     case 'begin-mission':

@@ -137,6 +137,12 @@ button{font-family:inherit;}
 .modal-card .modal-title{font-size:28px;}
 .modal-card .modal-body{font-size:19px;color:var(--stone-text);}
 .modal-actions{display:flex;gap:16px;margin-top:6px;}
+.reset-link{
+  margin-top:14px;background:none;border:none;padding:6px 4px;
+  font-family:'Gowun Dodum',sans-serif;font-size:15px;color:var(--dim);
+  text-decoration:underline;cursor:pointer;
+}
+.reset-link:active{color:var(--stone-text);}
 
 /* ---------- cards / generic ---------- */
 .card{background:var(--cream);border:3px solid var(--stone);border-radius:28px;}
@@ -202,6 +208,7 @@ button{font-family:inherit;}
 /* ---------- station home ---------- */
 .home-steps{flex:1;display:flex;justify-content:center;padding:24px 56px 16px;min-height:0;overflow:auto;}
 .home-steps-inner{display:flex;flex-direction:column;gap:10px;width:100%;max-width:900px;}
+.home-steps-title{font-size:30px;margin-bottom:4px;}
 .step-row{display:flex;gap:16px;align-items:center;background:var(--cream);border-radius:20px;padding:12px 20px;border:3px solid var(--stone);}
 .step-num{flex:none;width:44px;height:44px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:25px;line-height:1;font-family:'Jua';}
 .step-text{font-size:21px;line-height:1.35;}
